@@ -1,3 +1,7 @@
 /backend/.env 
 /frontend/solo-react-proj/node_modules  
 /backend/node_modules
+/authenticate-me/backend/node_modules
+/authenticate-me/backend/.env
+/authenticate-me/backend/build
+/authenticate-me/backend/.DS_Store 
