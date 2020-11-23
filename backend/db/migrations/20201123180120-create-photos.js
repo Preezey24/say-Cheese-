@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false, 
       },
       title: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(200),
         allowNull: false, 
       },
       author: {
