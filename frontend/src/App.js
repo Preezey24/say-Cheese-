@@ -7,22 +7,23 @@ import * as photoActions from './store/photo';
 import Navigation from "./components/Navigation"; 
 import LoginFormPage from './components/LoginFormPage';
 import HomePage from './components/HomePage';
+// import PhotoPage from './components/PhotoPage'
 
 function App() {
   const dispatch = useDispatch(); 
   const [isLoaded, setIsLoaded] = useState(false); 
-  const [photos, setPhotos] = useState(''); 
+  const [photos, setPhotos] = useState([]); 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]); 
   useEffect(() => {
-    dispatch(photoActions.getPhotos()).then((state) => console.log(state))
+    dispatch(photoActions.getPhotos()).then((state) => setPhotos(state)); 
   }, [dispatch]);
   
   return (
     <>
     <Navigation isLoaded={isLoaded} />
-    {/* <HomePage photos={photos}/> */}
+    <HomePage photos={photos}/>
     {isLoaded && (
       <Switch>
         <Route path="/login">
@@ -31,6 +32,9 @@ function App() {
         <Route path="/signup">
           <SignUpFormPage />
         </Route>
+        <Route path="/photos/:photoId">
+          {/* <PhotoPage /> */}
+        </Route> 
       </Switch>
     )}
   </>
