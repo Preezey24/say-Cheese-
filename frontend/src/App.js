@@ -7,7 +7,7 @@ import * as photoActions from './store/photo';
 import Navigation from "./components/Navigation"; 
 import LoginFormPage from './components/LoginFormPage';
 import HomePage from './components/HomePage';
-// import PhotoPage from './components/PhotoPage'
+import PhotoPage from './components/PhotoPage'
 
 function App() {
   const dispatch = useDispatch(); 
@@ -23,9 +23,11 @@ function App() {
   return (
     <>
     <Navigation isLoaded={isLoaded} />
-    <HomePage photos={photos}/>
     {isLoaded && (
       <Switch>
+        <Route exact path="/">
+          <HomePage photos={photos}/>
+        </Route>
         <Route path="/login">
           <LoginFormPage />
         </Route>
@@ -33,8 +35,8 @@ function App() {
           <SignUpFormPage />
         </Route>
         <Route path="/photos/:photoId">
-          {/* <PhotoPage /> */}
-        </Route> 
+          <PhotoPage /> 
+        </Route>
       </Switch>
     )}
   </>

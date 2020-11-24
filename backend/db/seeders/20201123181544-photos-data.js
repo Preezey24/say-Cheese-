@@ -17,7 +17,7 @@ module.exports = {
       const description = faker.random.words(15 + getRandom(20)); 
       const createdAt = faker.date.past(2); 
       const updatedAt = faker.date.between(createdAt, faker.date.recent());
-      const imageLink = faker.image.animals(); 
+      const imageLink = `${faker.image.animals()}/any?dummy=${i}`; 
 
       photos.push({
         imageLink, 

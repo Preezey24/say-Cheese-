@@ -28,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
         exclude: ['description', 'createdAt', 'updatedAt'],
       }
     },
+    scopes: {
+      photoPage: {
+        attributes: { exclude: [ 'updatedAt ']}
+      }
+    },
   });
   Photo.associate = function(models) {
     Photo.belongsTo(models.User, {foreignKey: 'userId'}) 

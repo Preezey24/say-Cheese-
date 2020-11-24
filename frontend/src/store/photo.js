@@ -8,7 +8,7 @@ const addPhotos = (photos) => {
     };
 };
 
-export const addPhoto = (photo) => {
+const addPhoto = (photo) => {
     return {
         type: ADD_PHOTO, 
         payload: photo, 
@@ -22,8 +22,11 @@ export const getPhotos = () => async (dispatch) => {
     return data; 
 };
 
-export const getSinglePhoto = () => async (dispatch) => {
-    const response = await fetch('/api/photos/')
+export const getSinglePhoto = (photoId) => async (dispatch) => {
+    const response = await fetch(`/api/photos/${photoId}`);
+    const photo = await response.json(); 
+    dispatch(addPhoto(photo)); 
+    return photo; 
 }
 
 const initialState = { photos: [] }
