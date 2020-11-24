@@ -1,13 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler'); 
-const { Photo } = require('../../db/models')
+const { Photo, Comment } = require('../../db/models')
 
 const router = express.Router();
 
 router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.photoId, 10);
     console.log(id);  
-    const photo = await Photo.scope('photoPage').findByPk(id); 
+    const photo = await Photo.scope('photoPage').findByPk(id, {
+        include: Comment,
+    }); 
     res.json(photo); 
 }));
 
