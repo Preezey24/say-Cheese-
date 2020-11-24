@@ -7,10 +7,11 @@ const { Photo } = require('../db/models')
 // Add a XSRF-TOKEN cookie in development
 router.get('/api/csrf/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
+    debugger; 
     return res.json({});
 });
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/hello', asyncHandler(async (req, res) => {
     const photos = await Photo.findAll({});
     res.json(photos); 
 }));
