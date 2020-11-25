@@ -1,3 +1,6 @@
+import * as commentActions from './comment';
+// import { fetch } from './csrf';
+
 const ADD_PHOTOS = 'photos/addPhotos'
 const ADD_PHOTO = 'photos/addPhoto'
 
@@ -26,21 +29,19 @@ export const getSinglePhoto = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}`);
     const photo = await response.json(); 
     dispatch(addPhoto(photo)); 
+    dispatch(commentActions.getComments(photo.Comments))
     return photo; 
 }
 
-const initialState = { photos: [] }
+const initialState = [];
 
 const photoReducer = (state = initialState, action) => {
     let newState; 
     switch (action.type) {
         case ADD_PHOTOS: 
-            newState = Object.assign({}, state);
-            newState.photos = action.payload; 
-            return newState; 
+            return action.payload; 
         case ADD_PHOTO: 
-            newState = Object.assign({}, state); 
-            newState.photo = action.payload;
+            newState = [action.payload]; 
             return newState; 
         default:
             return state; 
