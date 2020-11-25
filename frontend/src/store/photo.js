@@ -1,3 +1,6 @@
+import * as commentActions from './comment';
+// import { fetch } from './csrf';
+
 const ADD_PHOTOS = 'photos/addPhotos'
 const ADD_PHOTO = 'photos/addPhoto'
 
@@ -26,6 +29,7 @@ export const getSinglePhoto = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}`);
     const photo = await response.json(); 
     dispatch(addPhoto(photo)); 
+    dispatch(commentActions.getComments(photo.Comments))
     return photo; 
 }
 

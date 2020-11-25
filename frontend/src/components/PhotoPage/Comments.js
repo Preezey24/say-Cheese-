@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../store/comment';
 import { useParams } from 'react-router-dom'; 
 
-const Comments = (props) => {
+const Comments = () => {
     const dispatch = useDispatch(); 
     const [newComment, setComment] = useState(""); 
     const [edit, setEdit] = useState(false);
     const [editCommentId, setEditComment] = useState("");  
     const { photoId } = useParams(); 
     const userId = useSelector(state => state.session.user.id)
+    const comments = useSelector(state => state.comment); 
 
     useEffect(() => {
-        dispatch(commentActions.getComments(props.comments));
-    }, [dispatch, props.comments]); 
+        dispatch(commentActions.getComments(comments));
+    }, [dispatch, comments]); 
 
     const addClick = () => {
         dispatch(commentActions.newComment(newComment, photoId, userId));
@@ -37,7 +38,7 @@ const Comments = (props) => {
 
     return (
         <>
-            {props.comments.map(comment => {
+            {comments.map(comment => {
                 const auth = userId === comment.userId
                 return (
                     <>  

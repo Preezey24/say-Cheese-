@@ -42,6 +42,7 @@ router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
     const { newComment, photoId } = req.body; 
 
     const oldComment = await Comment.findByPk(commentId);
+    console.log(oldComment); 
     oldComment.comment = newComment; 
     await oldComment.save(); 
     
@@ -49,6 +50,9 @@ router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
         where: {
             photoId,
         },
+        order: [
+            ['id', 'ASC'],
+        ]
     });
     res.json(comments);
 }))
