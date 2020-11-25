@@ -12,6 +12,9 @@ const Comments = () => {
     const userId = useSelector(state => state.session.user.id)
     const comments = useSelector(state => state.comment); 
 
+    //sort array for edit command 
+    comments.sort((a, b) => a.id - b.id); 
+
     useEffect(() => {
         dispatch(commentActions.getComments(comments));
     }, [dispatch, comments]); 

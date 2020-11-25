@@ -50,9 +50,6 @@ router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
         where: {
             photoId,
         },
-        order: [
-            ['id', 'ASC'],
-        ]
     });
     res.json(comments);
 }))

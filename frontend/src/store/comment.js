@@ -49,7 +49,6 @@ export const editComment = (commentId, newComment, photoId) => async dispatch =>
 const initialState = [];
 
 const commentReducer = (state = initialState, action) => {
-    let newState; 
     switch (action.type) {
         case GET_COMMENTS:
             return action.payload; 
