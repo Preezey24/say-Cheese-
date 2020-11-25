@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'; 
+import { fetch } from './csrf'; 
 
 const GET_COMMENTS = 'comments/getComments';
 const ADD_COMMENT = 'comments/addComment'; 
@@ -12,8 +12,7 @@ export const getComments = (comments) => {
     };
 };
 
-export const newComment = (comment) => async dispatch => {
-    const photoId = useSelector(state => state.photo.id)
+export const newComment = (comment, photoId) => async dispatch => {
     const userId = 13; 
 
     const res = await fetch('/api/comments/', {
@@ -24,19 +23,17 @@ export const newComment = (comment) => async dispatch => {
             userId,    
         }),
     });
-    const comments = res.json(); 
+    const comments = res.data; 
     dispatch(getComments(comments)); 
 }
 
-const initialState = { comments: [] };
+const initialState = [];
 
 const commentReducer = (state = initialState, action) => {
     let newState; 
     switch (action.type) {
         case GET_COMMENTS:
-            newState = Object.assign({}, state); 
-            newState.comments = action.payload; 
-            return newState; 
+            return action.payload; 
         default: 
             return state; 
     }

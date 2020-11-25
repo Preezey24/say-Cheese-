@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'; 
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux'; 
 import * as commentActions from '../../store/comment';
 
 const Comments = (props) => {
     const dispatch = useDispatch(); 
     const [newComment, setComment] = useState(""); 
+    const photoId = useSelector(state => state.photo[0].id);
 
     useEffect(() => {
         dispatch(commentActions.getComments(props.comments));
     }, [dispatch, props.comments]); 
 
-    const handleClick = (e) => {
-        dispatch(commentActions.newComment(newComment));
+    const handleClick = () => {
+        dispatch(commentActions.newComment(newComment, photoId));
+        setComment(""); 
     };
 
     return (

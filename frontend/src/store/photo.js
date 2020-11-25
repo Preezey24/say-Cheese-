@@ -29,18 +29,15 @@ export const getSinglePhoto = (photoId) => async (dispatch) => {
     return photo; 
 }
 
-const initialState = { photos: [] };
+const initialState = [];
 
 const photoReducer = (state = initialState, action) => {
     let newState; 
     switch (action.type) {
         case ADD_PHOTOS: 
-            newState = Object.assign({}, state);
-            newState.photos = action.payload; 
-            return newState; 
+            return action.payload; 
         case ADD_PHOTO: 
-            newState = Object.assign({}, state); 
-            newState.photo = action.payload;
+            newState = [action.payload]; 
             return newState; 
         default:
             return state; 
