@@ -13,11 +13,11 @@ const Comments = () => {
     const comments = useSelector(state => state.comment); 
 
     //sort array for edit command 
-    comments.sort((a, b) => a.id - b.id); 
+    // comments.sort((a, b) => a.id - b.id); 
 
     useEffect(() => {
         dispatch(commentActions.getComments(comments));
-    }, [dispatch, comments]); 
+    }, [dispatch]); 
 
     const addClick = () => {
         dispatch(commentActions.newComment(newComment, photoId, userId));
@@ -41,26 +41,26 @@ const Comments = () => {
 
     return (
         <>
-            {comments.map(comment => {
-                const auth = userId === comment.userId
+            {Object.entries(comments).map(([key, value]) => {
+                const auth = userId === value.userId
                 return (
                     <>  
-                        {!(editCommentId == comment.id) && (                     
-                            <div key={comment.id}>
-                                {comment.comment}
+                        {!(editCommentId == key) && (                     
+                            <div key={key}>
+                                {value.comment}
                                 {auth && (
                                     <>
-                                        <button onClick={editClick} id={comment.id}>Edit</button>
-                                        <button onClick={deleteClick} id={comment.id}>Delete</button>
+                                        <button onClick={editClick} id={key}>Edit</button>
+                                        <button onClick={deleteClick} id={key}>Delete</button>
                                     </>
                                 )};
                             </div>
                         )}
-                        {edit && editCommentId == comment.id && (
+                        {edit && editCommentId == key && (
                             <div>
                                 <textarea cols="30" rows="10" onChange={(e) => setComment(e.target.value)} 
                                 value={newComment}>
-                                    {comment.comment}
+                                    {value.comment}
                                 </textarea>
                                 <button onClick={editComplete}>Done</button>
                             </div>

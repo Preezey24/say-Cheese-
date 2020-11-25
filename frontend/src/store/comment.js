@@ -1,6 +1,9 @@
 import { fetch } from './csrf'; 
 
 const GET_COMMENTS = 'comments/getComments';
+const ADD_COMMENT = 'comments/addComment'; 
+const EDIT_COMMENT = 'comments/editComment';
+const DELETE_COMMENT = 'comment/deleteComment';  
 
 export const getComments = (comments) => {
     return {
@@ -8,6 +11,27 @@ export const getComments = (comments) => {
         payload: comments, 
     };
 };
+
+const addComment = (comment) => {
+    return {
+        type: ADD_COMMENT, 
+        payload: comment, 
+    };
+};
+
+const adjustComment = (comment) => {
+    return {
+        type: EDIT_COMMENT, 
+        payload: comment, 
+    };
+};
+
+const removeComment = (id) => {
+    return {
+        type: DELETE_COMMENT, 
+        payload: id, 
+    }
+}
 
 export const newComment = (comment, photoId, userId) => async dispatch => {
 
@@ -19,8 +43,8 @@ export const newComment = (comment, photoId, userId) => async dispatch => {
             userId,    
         }),
     });
-    const comments = res.data; 
-    dispatch(getComments(comments));  
+    const newComment = res.data; 
+    dispatch(addComment(newComment));  
 }
 
 export const deleteComment = (commentId, photoId) => async dispatch => {
@@ -30,8 +54,8 @@ export const deleteComment = (commentId, photoId) => async dispatch => {
             photoId, 
         })
     });
-    const comments = res.data; 
-    dispatch(getComments(comments)); 
+    const comment = res.data; 
+    dispatch(removeComment(comment.id)); 
 }
 
 export const editComment = (commentId, newComment, photoId) => async dispatch => {
@@ -46,12 +70,22 @@ export const editComment = (commentId, newComment, photoId) => async dispatch =>
     dispatch(getComments(comments)); 
 }
 
-const initialState = [];
+const initialState = {};
 
 const commentReducer = (state = initialState, action) => {
+    let newState; 
     switch (action.type) {
         case GET_COMMENTS:
             return action.payload; 
+        case ADD_COMMENT: 
+            newState = {...state, [action.payload.id]: action.payload};
+            return newState;   
+        case DELETE_COMMENT: 
+            newState = Object.assign({}, state);
+            delete newState[action.payload]; 
+            return newState; 
+        // case EDIT_COMMENT: 
+        //     return {...state, [action.payload.id]:action.payload }
         default: 
             return state; 
     }

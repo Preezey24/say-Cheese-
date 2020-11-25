@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 const HomePage = (props) => {
     const history = useHistory(); 
+    const photos = props.photos; 
     
     const handleClick = (e) => {
         const photoId = e.target.id; 
@@ -11,10 +12,10 @@ const HomePage = (props) => {
 
     return (
         <>
-            {props.photos.map(photo => {
+            {Object.entries(photos).map(([key, value]) => {
                 return (
                     <>
-                        <img id={photo.id} key={photo.id} src={photo.imageLink} 
+                        <img id={key} key={key} src={value.imageLink} 
                         alt="" onClick={handleClick} />
                    </>
                 )

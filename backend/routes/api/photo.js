@@ -5,16 +5,36 @@ const { Photo, Comment } = require('../../db/models')
 const router = express.Router();
 
 router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.photoId, 10); 
-    const photo = await Photo.scope('photoPage').findByPk(id, {
+    const photoId = parseInt(req.params.photoId, 10); 
+    const photo = await Photo.scope('photoPage').findByPk(photoId, {
         include: Comment,
     }); 
-    res.json(photo); 
+    let obj = {}; 
+    for (let i=0; i < photo.Comments.length - 1; i++) {
+        let comment = photo.Comments[i]; 
+        obj[comment.id] = comment;
+    };
+    const {id, imageLink, title, author, description, userId, createdAt} = photo; 
+    res.json({
+        id,
+        imageLink,
+        title,
+        author, 
+        description, 
+        userId,
+        createdAt, 
+        comments: obj, 
+    })
 }));
 
 router.get('/', asyncHandler(async (req, res) => {
-    const photos = await Photo.findAll({});
-    res.json(photos); 
+    const photos = await Photo.findAll({}); 
+    let obj = {}; 
+    for (let i=0; i < photos.length-1; i++) {
+        let photo = photos[i]; 
+        obj[photo.id] = photo; 
+    }
+    res.json(obj); 
 }));
 
 

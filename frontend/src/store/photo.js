@@ -29,11 +29,11 @@ export const getSinglePhoto = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}`);
     const photo = await response.json(); 
     dispatch(addPhoto(photo)); 
-    dispatch(commentActions.getComments(photo.Comments))
+    dispatch(commentActions.getComments(photo.comments));
     return photo; 
 }
 
-const initialState = [];
+const initialState = {};
 
 const photoReducer = (state = initialState, action) => {
     let newState; 
@@ -41,8 +41,7 @@ const photoReducer = (state = initialState, action) => {
         case ADD_PHOTOS: 
             return action.payload; 
         case ADD_PHOTO: 
-            newState = [action.payload]; 
-            return newState; 
+            return action.payload; 
         default:
             return state; 
     }

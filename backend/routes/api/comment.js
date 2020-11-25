@@ -7,34 +7,26 @@ const router = express.Router();
 router.post('/', asyncHandler( async (req, res) => {
     const { comment, photoId, userId } = req.body;
     
-    await Comment.create({
+    const newComment = Comment.build({
         comment, 
         photoId,
         userId, 
     });
 
-    const comments = await Comment.findAll({
-        where: {
-            photoId,
-        },
-    }); 
-    res.json(comments); 
+    await newComment.save(); 
+
+    res.json(newComment); 
 }));
 
 router.delete('/:commentId(\\d+)', asyncHandler( async (req, res) => {
     const commentId = parseInt(req.params.commentId, 10); 
-    const comment = await Comment.findByPk(commentId); 
-    const { photoId } = req.body; 
+    const comment = await Comment.findByPk(commentId);  
 
     if (comment) {
         await comment.destroy();  
     } 
-    const comments = await Comment.findAll({
-        where: {
-            photoId,
-        },
-    });
-    res.json(comments);
+
+    res.json(comment);
 }));
 
 router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
@@ -46,12 +38,7 @@ router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
     oldComment.comment = newComment; 
     await oldComment.save(); 
     
-    const comments = await Comment.findAll({
-        where: {
-            photoId,
-        },
-    });
-    res.json(comments);
+    res.json(oldComment);
 }))
 
 module.exports = router; 
