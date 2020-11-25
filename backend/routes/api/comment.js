@@ -4,16 +4,6 @@ const { Comment } = require('../../db/models');
 
 const router = express.Router(); 
 
-router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
-    const photoId = parseInt(req.params.photoId, 10); 
-    const comments = await Comment.findAll({
-        where: {
-            photoId, 
-        }
-    });
-    res.json(comments); 
-}))
-
 router.post('/', asyncHandler( async (req, res) => {
     const { comment, photoId, userId } = req.body;
     
@@ -30,5 +20,37 @@ router.post('/', asyncHandler( async (req, res) => {
     }); 
     res.json(comments); 
 }));
+
+router.delete('/:commentId(\\d+)', asyncHandler( async (req, res) => {
+    const commentId = parseInt(req.params.commentId, 10); 
+    const comment = await Comment.findByPk(commentId); 
+    const { photoId } = req.body; 
+
+    if (comment) {
+        await comment.destroy();  
+    } 
+    const comments = await Comment.findAll({
+        where: {
+            photoId,
+        },
+    });
+    res.json(comments);
+}));
+
+router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
+    const commentId = parseInt(req.params.commentId, 10); 
+    const { newComment, photoId } = req.body; 
+
+    const oldComment = await Comment.findByPk(commentId);
+    oldComment.comment = newComment; 
+    await oldComment.save(); 
+    
+    const comments = await Comment.findAll({
+        where: {
+            photoId,
+        },
+    });
+    res.json(comments);
+}))
 
 module.exports = router; 

@@ -1,9 +1,6 @@
 import { fetch } from './csrf'; 
 
 const GET_COMMENTS = 'comments/getComments';
-const ADD_COMMENT = 'comments/addComment'; 
-const DELETE_COMMENT = 'comments/deleteComment';
-const EDIT_COMMENT = 'comments/editComment'; 
 
 export const getComments = (comments) => {
     return {
@@ -12,8 +9,7 @@ export const getComments = (comments) => {
     };
 };
 
-export const newComment = (comment, photoId) => async dispatch => {
-    const userId = 13; 
+export const newComment = (comment, photoId, userId) => async dispatch => {
 
     const res = await fetch('/api/comments/', {
         method: 'POST', 
@@ -21,6 +17,29 @@ export const newComment = (comment, photoId) => async dispatch => {
             comment, 
             photoId, 
             userId,    
+        }),
+    });
+    const comments = res.data; 
+    dispatch(getComments(comments));  
+}
+
+export const deleteComment = (commentId, photoId) => async dispatch => {
+    const res = await fetch(`/api/comments/${commentId}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            photoId, 
+        })
+    });
+    const comments = res.data; 
+    dispatch(getComments(comments)); 
+}
+
+export const editComment = (commentId, newComment, photoId) => async dispatch => {
+    const res = await fetch(`/api/comments/${commentId}`, {
+        method: 'PUT', 
+        body: JSON.stringify({ 
+            newComment,
+            photoId, 
         }),
     });
     const comments = res.data; 
