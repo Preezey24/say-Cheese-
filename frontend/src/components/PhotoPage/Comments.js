@@ -6,7 +6,9 @@ import { useParams } from 'react-router-dom';
 const Comments = () => {
     const dispatch = useDispatch(); 
     const [newComment, setComment] = useState(""); 
+    const [editText, setEditText] = useState(""); 
     const [edit, setEdit] = useState(false);
+    const [render, setRender] = useState(false); 
     const [editCommentId, setEditComment] = useState("");  
     const { photoId } = useParams(); 
     const userId = useSelector(state => state.session.user.id)
@@ -17,7 +19,7 @@ const Comments = () => {
 
     useEffect(() => {
         dispatch(commentActions.getComments(comments));
-    }, [dispatch]); 
+    }, [dispatch, render]); 
 
     const addClick = () => {
         dispatch(commentActions.newComment(newComment, photoId, userId));
@@ -32,11 +34,13 @@ const Comments = () => {
     const editClick = (e) => {
         const commentId = e.target.id; 
         setEdit(true);
-        setEditComment(commentId);  
+        setEditComment(commentId); 
+        setEditText(comments[commentId].comment);
     };
 
     const editComplete = () => {
-        dispatch(commentActions.editComment(editCommentId, newComment, photoId)); 
+        dispatch(commentActions.editComment(editCommentId, editText));
+        setEdit(false); 
     }
 
     return (
@@ -58,10 +62,8 @@ const Comments = () => {
                         )}
                         {edit && editCommentId == key && (
                             <div>
-                                <textarea cols="30" rows="10" onChange={(e) => setComment(e.target.value)} 
-                                value={newComment}>
-                                    {value.comment}
-                                </textarea>
+                                <textarea cols="30" rows="10" onChange={(e) => setEditText(e.target.value)} 
+                                value={editText}/>
                                 <button onClick={editComplete}>Done</button>
                             </div>
                         )}

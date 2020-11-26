@@ -58,16 +58,15 @@ export const deleteComment = (commentId, photoId) => async dispatch => {
     dispatch(removeComment(comment.id)); 
 }
 
-export const editComment = (commentId, newComment, photoId) => async dispatch => {
+export const editComment = (commentId, newComment) => async dispatch => {
     const res = await fetch(`/api/comments/${commentId}`, {
         method: 'PUT', 
         body: JSON.stringify({ 
             newComment,
-            photoId, 
         }),
     });
-    const comments = res.data; 
-    dispatch(getComments(comments)); 
+    const comment = res.data; 
+    dispatch(adjustComment(comment)); 
 }
 
 const initialState = {};
@@ -84,8 +83,10 @@ const commentReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             delete newState[action.payload]; 
             return newState; 
-        // case EDIT_COMMENT: 
-        //     return {...state, [action.payload.id]:action.payload }
+        case EDIT_COMMENT: 
+            newState  = Object.assign({}, state);
+            newState[action.payload.id] = action.payload;
+            return newState; 
         default: 
             return state; 
     }

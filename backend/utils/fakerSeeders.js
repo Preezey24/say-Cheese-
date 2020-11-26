@@ -1,5 +1,4 @@
 'use strict';
-const { random } = require('faker');
 const faker = require('faker');
 
 //Photo generation 
@@ -103,33 +102,36 @@ const tagObj = {
 
 function tagSorter(photoId, imageLink, tagObj, globalArr) {
 const urlArr = imageLink.split('/');
+const createdAt = new Date(); 
+const updatedAt = new Date(); 
+
 if (urlArr.includes('animals')) {
     tagObj['animals'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     }) 
 } else if (urlArr.includes('cats')) {
     tagObj['cats'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 } else if (urlArr.includes('nature')) {
     tagObj['nature'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 } else if (urlArr.includes('sports')) {
     tagObj['sports'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 } else if (urlArr.includes('nightlife')) {
     tagObj['nightlife'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 } else if (urlArr.includes('food')) {
     tagObj['food'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 } else if (urlArr.includes('transport')) {
     tagObj['transport'].forEach(tag => {
-    globalArr.push({tag, photoId});
+    globalArr.push({tag, photoId, createdAt, updatedAt});
     })  
 }
 }; 
@@ -172,24 +174,23 @@ const randomComments = [
 ]
 
 const comments = []; 
-const users = 23; 
-const photos = 50; 
+const photosNum = 50
 
 for(let i=0; i<50; i++) {
     const userId = getRandom(users); 
-    const photoId = getRandom(photos); 
+    const photoId = getRandom(photosNum); 
     const comment = randomComments[getRandom(randomComments.length) - 1];
     const createdAt = faker.date.past(2); 
     const updatedAt = faker.date.between(createdAt, faker.date.recent());
 
     comments.push({
-    comment, 
-    photoId, 
-    userId,
-    createdAt, 
-    updatedAt,
+        comment, 
+        photoId, 
+        userId,
+        createdAt, 
+        updatedAt,
     })
-}
+};
 
 module.exports = {
     photos,
