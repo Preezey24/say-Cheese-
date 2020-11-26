@@ -9,10 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       tag: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(35),
+        allowNull: false, 
       },
       photoId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER, 
+        allowNull: false, 
+        references: { model: 'Photos' }
       },
       createdAt: {
         allowNull: false,

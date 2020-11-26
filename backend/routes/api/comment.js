@@ -31,10 +31,9 @@ router.delete('/:commentId(\\d+)', asyncHandler( async (req, res) => {
 
 router.put('/:commentId(\\d+)', asyncHandler( async (req, res) => {
     const commentId = parseInt(req.params.commentId, 10); 
-    const { newComment, photoId } = req.body; 
+    const { newComment } = req.body; 
 
-    const oldComment = await Comment.findByPk(commentId);
-    console.log(oldComment); 
+    const oldComment = await Comment.findByPk(commentId); 
     oldComment.comment = newComment; 
     await oldComment.save(); 
     

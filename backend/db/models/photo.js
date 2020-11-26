@@ -31,6 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     scopes: {
       photoPage: {
         attributes: { exclude: [ 'updatedAt ']}
+      }, 
+      tags: {
+        attributes: {
+          exclude: ['title', 'author', 'description', 'userId', 'createdAt', 'updatedAt']
+        }
       }
     },
   });

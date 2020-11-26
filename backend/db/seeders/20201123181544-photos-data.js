@@ -5,10 +5,20 @@ function getRandom(max) {
   return Math.floor(Math.random() * max) + 1; 
 }
 
+function randomPhoto(string) {
+  const photoArray = ["animals", "cats", "food", "nightlife", "nature", 
+  "sports", "transport"]; 
+  const stringArr = string.split('/'); 
+  const index = stringArr.indexOf('animals'); 
+  const i = getRandom(photoArray.length-1); 
+  stringArr[index] = photoArray[i]; 
+  return stringArr.join('/');  
+};
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const photos = []; 
-    const users = 23; 
+    const users = 23;
 
     for(let i=0; i<50; i++) {
       const userId = getRandom(users); 
@@ -17,7 +27,9 @@ module.exports = {
       const description = faker.random.words(15 + getRandom(20)); 
       const createdAt = faker.date.past(2); 
       const updatedAt = faker.date.between(createdAt, faker.date.recent());
-      const imageLink = `${faker.image.animals()}/any?dummy=${i}`; 
+      let imageLink = `${faker.image.animals()}/any?dummy=${i}`;
+      imageLink = randomPhoto(imageLink); 
+
 
       photos.push({
         imageLink, 
@@ -33,5 +45,5 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Photos', null, {});
-  }
+  },
 };
