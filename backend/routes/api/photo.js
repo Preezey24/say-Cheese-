@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler'); 
-const { Photo, Comment } = require('../../db/models')
+const { Photo, Comment } = require('../../db/models');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
         include: Comment,
     }); 
     let obj = {}; 
-    for (let i=0; i < photo.Comments.length - 1; i++) {
+    for (let i=1; i < photo.Comments.length; i++) {
         let comment = photo.Comments[i]; 
         obj[comment.id] = comment;
     };

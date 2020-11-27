@@ -77,7 +77,8 @@ const commentReducer = (state = initialState, action) => {
         case GET_COMMENTS:
             return action.payload; 
         case ADD_COMMENT: 
-            newState = {...state, [action.payload.id]: action.payload};
+            newState = Object.assign({}, state); 
+            newState[action.payload.id] = action.payload; 
             return newState;   
         case DELETE_COMMENT: 
             newState = Object.assign({}, state);

@@ -1,5 +1,5 @@
 import * as commentActions from './comment';
-// import { fetch } from './csrf';
+import { fetch } from './csrf';
 
 const ADD_PHOTOS = 'photos/addPhotos'
 const ADD_PHOTO = 'photos/addPhoto'
@@ -20,17 +20,28 @@ const addPhoto = (photo) => {
 
 export const getPhotos = () => async (dispatch) => {
     const response = await fetch('/api/photos');
-    const data = await response.json();   
+    const data = response.data;   
     dispatch(addPhotos(data));
     return data; 
 };
 
 export const getSinglePhoto = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}`);
-    const photo = await response.json(); 
+    const photo = response.data; 
     dispatch(addPhoto(photo)); 
     dispatch(commentActions.getComments(photo.comments));
     return photo; 
+}
+
+export const searchPhotos = (searchTerm) => async (dispatch) => {
+    const response = await fetch(`/api/tags/${searchTerm}`);        
+    const photos = response.data;
+    let photoObj = {};  
+    for (let i = 1; i < photos.length; i++) {
+        let photo = photos[i];  
+        photoObj[photo.Photo.id] = photo.Photo;  
+    }
+    dispatch(addPhotos(photoObj)); 
 }
 
 const initialState = {};

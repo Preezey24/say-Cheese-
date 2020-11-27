@@ -3,6 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js'); 
 const photoRouter = require('./photo.js');
 const commentRouter = require('./comment.js'); 
+const tagRouter = require('./tag.js'); 
 
 router.use('/session', sessionRouter); 
 
@@ -11,6 +12,8 @@ router.use('/users', usersRouter);
 router.use('/photos', photoRouter); 
 
 router.use('/comments', commentRouter)
+
+router.use('/tags', tagRouter); 
 
 
 //TEST CASES 

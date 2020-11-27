@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react'; 
+import React from 'react'; 
 import { useHistory } from 'react-router-dom';
-import * as photoActions from '../../store/photo.js'; 
-import { useDispatch } from 'react-redux'; 
+import { useSelector } from 'react-redux'; 
 
-const HomePage = () => {
+const SearchResults = () => {
     const history = useHistory(); 
-    const [photos, setPhotos] = useState({}); 
-    const dispatch = useDispatch(); 
-    
-    useEffect(() => {
-        dispatch(photoActions.getPhotos()).then((state) => setPhotos(state)); 
-    }, [dispatch]);
+    const photos = useSelector(state => state.photo);
 
     const handleClick = (e) => {
         const photoId = e.target.id; 
         history.push(`/photos/${photoId}`); 
     };
-
+    
     return (
         <>
             {Object.entries(photos).map(([key, value]) => {
@@ -28,7 +22,7 @@ const HomePage = () => {
                 )
             })}
         </>
-    );
-};
+    )
+}
 
-export default HomePage; 
+export default SearchResults; 
