@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+.bg {
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    background:url('../../images/Peru-Lima-Miraflores.jpg') center no-repeat; 
+    background-size:cover; 
+    border: rgb(48, 42, 42, 0.2) 3px solid; 
+    display: flex; 
+    justify-content: center;
+}
+
+.module {
+    position: relative; 
+    top: 15%; 
+    height: 70%; 
+    width: 450px; 
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.6); 
+}
+
+.form {
+    height: 86%; 
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 10px 40px; 
+}
+
+.form__heading {
+    background-color: rgb(233, 192, 192);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gloria Hallelujah', cursive; 
+    font-size: large;
+    height: 50px;
+}
+
+.saycheese { 
+    font-weight: bold;
+}
+
+.form__inputs {
+    border-radius:3px; 
+    box-sizing: border-box;  
+    margin-bottom: 20px; 
+}
+
+.form__label {
+    box-sizing: border-box;
+    padding-left: 5px;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.textbox{
+    height:50px; 
+    width:100%; 
+    box-sizing: border-box; 
+    border: none;
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.textbox:focus{
+    background: white; 
+}
+
+.button{
+    height: 50px; 
+    width: 100%; 
+    border-radius: 3px; 
+    border: rgba(0,0,0,0.3) 0px solid; 
+    box-sizing:border-box;
+    padding:10px; 
+    margin-bottom:30px; 
+    background:#2cabca;
+    color:#FFF;
+    font-weight:bold;
+    font-size: 12pt;
+    transition: background-color 0.4s;
+    cursor: pointer;  
+}
+
+.button:hover {
+    background:#1325ce;
+}

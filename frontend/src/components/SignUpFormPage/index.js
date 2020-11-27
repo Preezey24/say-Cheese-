@@ -28,46 +28,65 @@ function SignUpFormPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>
-                Email
-                <input 
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Username 
-                <input 
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </label>
-            <label>
-                Confirm Password 
-                <input 
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div className={"bg"}>
+            <div className={"module"}>    
+                <div className={"form__heading"}>
+                    <p>Get immediate access to <span className={"saycheese"}>say Cheese!</span></p> 
+                </div>
+                <form onSubmit={handleSubmit} className={"form"}>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <div className={"form__inputs"}>
+                        <label className={"form__label"}>
+                            Email
+                            <input 
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className={"textbox"}
+                            />
+                        </label>
+                    </div>
+                    <div  className={"form__inputs"}>
+                        <label className={"form__label"}>
+                            Username 
+                            <input 
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                                className={"textbox"}
+                            />
+                        </label>
+                    </div>
+                    <div  className={"form__inputs"}>
+                        <label className={"form__label"}>
+                            Password
+                            <input 
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={"textbox"}
+                            />
+                        </label>
+                    </div>
+                    <div className={"form__inputs"}>
+                        <label className={"form__label"}>
+                            Confirm Password 
+                            <input 
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className={"textbox"}
+                            />
+                        </label>
+                    </div>
+                    <button type="submit" className={"button"}>Sign Up</button>
+                </form>
+            </div>
+        </div>
     )
 };
 
