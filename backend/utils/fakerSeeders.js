@@ -9,14 +9,14 @@ function getRandom(max) {
     return Math.floor(Math.random() * max) + 1; 
 };
 
-function randomPhoto(string) {
+function randomPhoto() {
     const photoArray = ["animals", "cats", "food", "nightlife", "nature", 
     "sports", "transport"]; 
-    const stringArr = string.split('/'); 
-    const index = stringArr.indexOf('animals'); 
     const i = getRandom(photoArray.length-1); 
-    stringArr[index] = photoArray[i]; 
-    return stringArr.join('/');  
+    const type = photoArray[i]; 
+    const sizeOne = getRandom(500) + 100; 
+    const sizeTwo = getRandom(350) + 100;  
+    return faker.image.imageUrl(sizeOne,sizeTwo,type);    
 };
 
 for(let i=0; i<50; i++) {
@@ -27,8 +27,7 @@ for(let i=0; i<50; i++) {
   const description = faker.random.words(15 + getRandom(20)); 
   const createdAt = faker.date.past(2); 
   const updatedAt = faker.date.between(createdAt, faker.date.recent());
-  let imageLink = `${faker.image.animals()}/any?dummy=${i}`;
-  imageLink = randomPhoto(imageLink); 
+  const imageLink = `${randomPhoto()}/any?dummy=${i}`
 
 
   photos.push({
