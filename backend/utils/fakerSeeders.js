@@ -14,8 +14,8 @@ function randomPhoto() {
     "sports", "transport"]; 
     const i = getRandom(photoArray.length-1); 
     const type = photoArray[i]; 
-    const sizeOne = getRandom(500) + 100; 
-    const sizeTwo = getRandom(350) + 100;  
+    const sizeOne = 640; 
+    const sizeTwo = 480;  
     return faker.image.imageUrl(sizeOne,sizeTwo,type);    
 };
 

@@ -9,7 +9,6 @@ const Comments = () => {
     const [newComment, setComment] = useState(""); 
     const [editText, setEditText] = useState(""); 
     const [edit, setEdit] = useState(false);
-    const [render, setRender] = useState(false); 
     const [editCommentId, setEditComment] = useState("");  
     const { photoId } = useParams(); 
     const userId = useSelector(state => state.session.user.id)
@@ -17,7 +16,7 @@ const Comments = () => {
 
     useEffect(() => {
         dispatch(commentActions.getComments(comments));
-    }, [dispatch, render]); 
+    }, [dispatch]); 
 
     const addClick = () => {
         dispatch(commentActions.newComment(newComment, photoId, userId));

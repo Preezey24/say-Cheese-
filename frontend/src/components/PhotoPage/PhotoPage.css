@@ -1,0 +1,39 @@
+.bg__photo-page {
+    position: relative;
+    height: 100%; 
+    width: 100%; 
+    display:grid; 
+    grid-template-areas:
+    "photo photo" 
+    "comments misc";
+}
+
+.photo__first-half {
+    grid-area: photo;
+    background-color: rgb(53, 51, 51); 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.photo__container {
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.img__container {
+    height: 420px;
+    width: 580px; 
+    box-shadow: 10px 5px 15px rgb(0, 0, 0, 0.6);
+    border: black 1px solid; 
+    border-radius: 3px; 
+}
+
+.photo__comments {
+    height: 100%; 
+    width: 100%; 
+    grid-area: comments;
+}

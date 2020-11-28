@@ -3,6 +3,7 @@ import * as photoActions from '../../store/photo';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Comments from './Comments'; 
+import './PhotoPage.css'; 
 
 const PhotoPage = () => {
     const [photo, setPhoto] = useState("..loading");
@@ -14,10 +15,16 @@ const PhotoPage = () => {
     }, [dispatch]);
 
     return (
-        <>
-            <img src={photo.imageLink} />
-            <Comments /> 
-        </>
+        <div className={"bg__photo-page"}>
+            <div className={"photo__first-half"}>
+                <div className={"photo__container"}>
+                    <img src={photo.imageLink} className={"img__container"}/>
+                </div>
+            </div>
+            <div className={"photo__comments"}>
+                <Comments /> 
+            </div>
+        </div>
     );
 }
 
