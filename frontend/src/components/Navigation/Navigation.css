@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.nav__container {
+    background-color: rgba(161, 89, 89, 0.1);
+    display: grid; 
+    height: 50px;
+    grid-template-columns: 20fr 70fr 10fr;
+    grid-template-areas:
+    "home search signin";
+}
+
+.nav__div-signin {
+    grid-area: signin;
+    display: flex; 
+}
+
+.nav__div-home {
+    grid-area: home;
+    display: flex; 
+    justify-content: center;
+}
+
+.nav__div-title {
+    grid-area: search;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 50px; 
+    font-family: 'Acme', sans-serif;
+    font-size: 28px;
+}
+
+.nav__div-search {
+    grid-area: search;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 50px; 
+}
+
+.nav__signup-button {
+    width: 80px;
+    margin: 10px 5px; 
+    border-radius: 3px; 
+    border: none; 
+    font-family: 'Robot', sans-serif;
+    background-color: rgb(228, 224, 224);
+    cursor: pointer;
+}
+
+.nav__signup-button a {
+    transition: color 0.5s; 
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav__signup-button a:hover {
+    color: rgb(6, 155, 255); 
+}
+
+.nav__login-button {
+    width: 80px;
+    margin: 10px 5px; 
+    border: none; 
+    font-family: 'Robot', sans-serif;
+    cursor: pointer; 
+}
+
+.nav__login-button a { 
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav__title {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.nav__home-button {
+    width: 80px;
+    margin: 10px 5px; 
+    border: none; 
+    font-family: 'Robot', sans-serif;
+    cursor: pointer; 
+}
+
+.nav__home-button a { 
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    transition: font-weight 0.5s; 
+}
+
+.nav__home-button:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 10px 5px 5px lightgray;   
+}
+
+.nav__home-button a:hover {
+    color: rgb(6, 155, 255);  
+}
+
+
+

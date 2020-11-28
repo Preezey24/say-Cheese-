@@ -1,0 +1,15 @@
+.search__button {
+    border: 1px black solid; 
+    background-color: rgb(228, 224, 224);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.search__input {
+    border: none; 
+    transition: border 0.5s; 
+}
+
+.search__input:hover {
+    border: 1px black solid; 
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'; 
 import * as photoActions from '../../store/photo'; 
 import { useHistory } from 'react-router-dom';
+import './SearchBar.css'; 
 
 const SearchBar = () => {
     const [search, setSearch] = useState("");
@@ -21,8 +22,12 @@ const SearchBar = () => {
     
     return (
         <>
-            <input onChange={handleChange} value={search} placeholder="Search here..."/>
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch} className={"search__button"}>
+                <span>
+                    <i class="fas fa-search"></i>
+                </span>
+            </button>
+            <input onChange={handleChange} value={search} className={"search__input"} placeholder="Search photos..."/>
         </>
     )
 }; 

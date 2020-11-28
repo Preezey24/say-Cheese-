@@ -31,7 +31,7 @@ function SignUpFormPage() {
         <div className={"bg"}>
             <div className={"module"}>    
                 <div className={"form__heading"}>
-                    <p>Get immediate access to <span className={"saycheese"}>say Cheese!</span></p> 
+                    <p>Get immediate access to <span className={"saycheese"}>say Cheese!!!</span></p> 
                 </div>
                 <form onSubmit={handleSubmit} className={"form"}>
                     <ul>
