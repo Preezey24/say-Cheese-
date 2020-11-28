@@ -5,7 +5,7 @@
     background-color: rgba(161, 89, 89, 0.1);
     display: grid; 
     height: 50px;
-    grid-template-columns: 20fr 70fr 10fr;
+    grid-template-columns: 10fr 70fr 10fr;
     grid-template-areas:
     "home search signin";
 }
@@ -66,11 +66,6 @@
     border: none; 
     font-family: 'Robot', sans-serif;
     cursor: pointer; 
-}
-
-.nav__login-button a { 
-    color: black;
-    text-decoration: none;
     font-size: 16px;
 }
 

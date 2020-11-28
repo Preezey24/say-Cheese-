@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import './LoginForm.css'
 
 function LoginForm() {
     const dispatch = useDispatch(); 
@@ -20,32 +21,40 @@ function LoginForm() {
     }
 
     return (
-        <form obSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
-            <label>
-                Username or Email
-                <input 
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password 
-                <input 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Log In</button>
-        </form>
+        <>
+            <div className={"login__heading"}>
+                <div className={"login__heading-text"}>Login </div> 
+                <i className="fas fa-camera-retro"></i>
+            </div>
+            <form onSubmit={handleSubmit} className={"form__login"}>
+                <ul>
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+                <label className={"form__login-label"}>
+                    Username or Email
+                    <input 
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                        className={"textbox__login"}
+                    />
+                </label>
+                <label className={"form__login-label"}>
+                    Password 
+                    <input 
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className={"textbox__login"}
+                    />
+                </label>
+                <button type="submit" className={"button__login"}>Log In</button>
+            </form>
+        </>
     );
 }
 

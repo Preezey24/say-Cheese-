@@ -24,7 +24,7 @@ const SearchBar = () => {
         <>
             <button onClick={handleSearch} className={"search__button"}>
                 <span>
-                    <i class="fas fa-search"></i>
+                    <i className="fas fa-search"></i>
                 </span>
             </button>
             <input onChange={handleChange} value={search} className={"search__input"} placeholder="Search photos..."/>
