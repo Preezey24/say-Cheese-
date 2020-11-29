@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.description__container {
+    box-sizing: border-box;
+    padding-left: 300px;  
+}
+
+.description__title {
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Robot', sans-serif;
+    margin-bottom: 10px;
+}
+
+.description__author {
+    font-size: 20px;
+    font-family: 'Robot', sans-serif;
+    margin: 10px 0px 40px; 
+}
+
+.comments__container {
+    overflow-y: visible;
+}
+
+.comment__container {
+    display: flex; 
+    justify-content: space-between;
+    width: 340px; 
+    padding: 5px 0 5px; 
+}
+
+.comment__container:hover { 
+    background-color: rgb(241, 241, 241);
+}
+
+.comment__container:hover button {
+    opacity: 1;
+}
+
+.comment__username {
+    font-family: 'Acme', sans-serif;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment__comment {
+    margin-top: 5px; 
+    margin-bottom: 1px;
+}
+
+.comment__edit-button {
+    position: relative;
+    top: 8px;
+    border: none;
+    background-color: rgb(241, 241, 241);
+    opacity: 0;
+    cursor: pointer;
+}
+
+.comment__delete-button {
+    position: relative;
+    top: 8px;
+    border: none;
+    background-color: rgb(241, 241, 241);
+    opacity: 0;
+    cursor: pointer;
+}
+
+.textbox__container {
+    margin-top: 20px;
+}
+
+.textbox__textarea {
+    resize: none; 
+    width: 340px; 
+    height: 100px;
+}
+
+.textbox__textarea:focus + button {
+    opacity: 1;  
+}
+
+.textbox__button {
+    position: relative; 
+    top: 25px; 
+    right: 75px; 
+    opacity: 0; 
+}

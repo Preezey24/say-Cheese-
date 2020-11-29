@@ -24,6 +24,9 @@ const PhotoPage = () => {
             <div className={"photo__comments"}>
                 <Comments /> 
             </div>
+            <div className={"photo__misc"}>
+                <p>HELLO WORLD</p>
+            </div>
         </div>
     );
 }

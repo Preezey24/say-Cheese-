@@ -46,7 +46,7 @@ function App() {
           <SignUpFormPage />
         </Route>
         <Route exact path="/photos/:photoId">
-          <PhotoPage /> 
+          <PhotoPage/> 
         </Route>
         <Route exact path={`/photos/tags/${tag}`}>
           <SearchResults /> 

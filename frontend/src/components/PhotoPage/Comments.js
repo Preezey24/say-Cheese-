@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../store/comment';
 import { useParams } from 'react-router-dom'; 
 import './Comments.css'; 
+import './PhotoPage.css';
 
 const Comments = () => {
     const dispatch = useDispatch(); 
@@ -11,7 +12,8 @@ const Comments = () => {
     const [edit, setEdit] = useState(false);
     const [editCommentId, setEditComment] = useState("");  
     const { photoId } = useParams(); 
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => state.session.user.id);
+    const photo = useSelector(state => state.photo)
     const comments = useSelector(state => state.comment); 
 
     useEffect(() => {
@@ -42,37 +44,58 @@ const Comments = () => {
 
     return (
         <>
-            {Object.entries(comments).map(([key, value]) => {
-                const auth = userId === value.userId
-                return (
-                    <>  
-                        {!(editCommentId == key) && (                     
-                            <div key={key}>
-                                {value.comment}
-                                {auth && (
-                                    <>
-                                        <button onClick={editClick} id={key}>Edit</button>
-                                        <button onClick={deleteClick} id={key}>Delete</button>
-                                    </>
-                                )};
-                            </div>
-                        )}
-                        {edit && editCommentId == key && (
-                            <div>
-                                <textarea cols="30" rows="10" onChange={(e) => setEditText(e.target.value)} 
-                                value={editText}/>
-                                <button onClick={editComplete}>Done</button>
-                            </div>
-                        )}
-                    </>
-                )
-            })}
-            <div>
-                <textarea placeholder="Add a comment" cols="30" 
-                rows="10" onChange={(e) => setComment(e.target.value)} value={newComment}/>
-                <button onClick={addClick}>
-                    Add Comment
-                </button>
+            <div className={"description__container"}> 
+                    <p className={"description__title"}>
+                        {photo.title}
+                    </p>
+                    <p className={"description__author"}>
+                        {photo.author}
+                    </p>               
+            <div className={"comments__container"}>
+                {Object.entries(comments).map(([key, value]) => {
+                    const auth = userId === value.userId
+                    return (
+                        <>  
+                            {!(editCommentId == key) && (
+                                    <div key={key} className={"comment__container"}>
+                                        <div>
+                                            <p className={"comment__username"}>
+                                                {value.User.username}
+                                            </p>
+                                            <p className={"comment__comment"}>
+                                                {value.comment}
+                                            </p>
+                                        </div>
+                                    {auth && (
+                                        <div>
+                                            <button onClick={editClick} id={key} className={"comment__edit-button"}>
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button onClick={deleteClick} id={key} className={"comment__delete-button"}>
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    )}
+                                    </div>
+                            )}
+                            {edit && editCommentId == key && (
+                                <div>
+                                    <textarea cols="30" rows="10" onChange={(e) => setEditText(e.target.value)} 
+                                    value={editText}/>
+                                    <button onClick={editComplete}>Done</button>
+                                </div>
+                            )}
+                        </>
+                    )
+                })}
+            </div>
+                <div className={"textbox__container"}>
+                    <textarea className={"textbox__textarea"} placeholder="Add a comment" cols="30" 
+                    rows="10" onChange={(e) => setComment(e.target.value)} value={newComment}/>
+                    <button className={"textbox__button"} onClick={addClick}>
+                        Comment
+                    </button>
+                </div>
             </div>
         </>
     )

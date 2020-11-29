@@ -9,6 +9,33 @@ function getRandom(max) {
     return Math.floor(Math.random() * max) + 1; 
 };
 
+const photoTitles = [
+  "Missing Cloud",
+  "The Shadowy Academy",
+  "Prophecy of Girlfriend",
+  "The Angels's Nobody",
+  "The Academy of the Stars",
+  "Dream in the Sex",
+  "Delicious Weeping",
+  "The Some Girlfriend",
+  "Heart of Fairy",
+  "The Academy's Rings",
+  "The Teacher of the Night",
+  "Name in the Man",
+  "White Theft",
+  "The Grey Misty",
+  "Pleasure of Snow",
+  "The Door's Planet",
+  "The Servant of the Time",
+  "History in the Witches", 
+  "Naked Secret",
+  "The Dwindling Lord",
+  "Time of Servant",
+  "The Window's Alien",
+  "The Mist of the Angels",
+  "Past in the Alien",
+]
+
 function randomPhoto() {
     const photoArray = ["animals", "cats", "food", "nightlife", "nature", 
     "sports", "transport"]; 
@@ -21,8 +48,9 @@ function randomPhoto() {
 
 for(let i=0; i<50; i++) {
   const userId = getRandom(users); 
+  const titleValNum = getRandom(photoTitles.length-1); 
   const id = i + 1; 
-  const title = faker.random.words(3 + getRandom(5));
+  const title = photoTitles[titleValNum];
   const author = `By ${faker.name.firstName()} ${faker.name.lastName()}`;
   const description = faker.random.words(15 + getRandom(20)); 
   const createdAt = faker.date.past(2); 

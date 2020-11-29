@@ -6,14 +6,8 @@ const router = express.Router();
 
 router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
     const photoId = parseInt(req.params.photoId, 10); 
-    const photo = await Photo.scope('photoPage').findByPk(photoId, {
-        include: Comment,
-    }); 
-    let obj = {}; 
-    for (let i=1; i < photo.Comments.length; i++) {
-        let comment = photo.Comments[i]; 
-        obj[comment.id] = comment;
-    };
+    const photo = await Photo.scope('photoPage').findByPk(photoId); 
+    
     const {id, imageLink, title, author, description, userId, createdAt} = photo; 
     res.json({
         id,
@@ -23,7 +17,6 @@ router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
         description, 
         userId,
         createdAt, 
-        comments: obj, 
     })
 }));
 

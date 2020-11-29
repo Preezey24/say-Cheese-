@@ -1,8 +1,26 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler'); 
-const { Comment } = require('../../db/models');
+const { Comment, User } = require('../../db/models');
 
 const router = express.Router(); 
+
+router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
+    const photoId = parseInt(req.params.photoId, 10); 
+    const comments = await Comment.findAll({
+        where: {
+            photoId,
+        },
+        include: User, 
+    });
+    let obj = {}; 
+    for (let i=1; i < comments.length; i++) {
+        let comment = comments[i]; 
+        obj[comment.id] = comment;
+    };
+    res.json({
+        obj
+    })
+}))
 
 router.post('/', asyncHandler( async (req, res) => {
     const { comment, photoId, userId } = req.body;

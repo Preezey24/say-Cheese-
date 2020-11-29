@@ -29,7 +29,7 @@ export const getSinglePhoto = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}`);
     const photo = response.data; 
     dispatch(addPhoto(photo)); 
-    dispatch(commentActions.getComments(photo.comments));
+    dispatch(commentActions.grabComments(photo.id));
     return photo; 
 }
 

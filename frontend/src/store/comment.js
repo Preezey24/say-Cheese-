@@ -33,6 +33,12 @@ const removeComment = (id) => {
     }
 }
 
+export const grabComments = (photoId) => async dispatch => {
+    const res = await fetch(`/api/comments/${photoId}`); 
+    const comments = res.data.obj; 
+    dispatch(getComments(comments)); 
+}
+
 export const newComment = (comment, photoId, userId) => async dispatch => {
 
     const res = await fetch('/api/comments/', {
