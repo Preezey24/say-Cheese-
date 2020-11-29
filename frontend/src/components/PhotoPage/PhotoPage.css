@@ -1,16 +1,13 @@
-.bg__photo-page {
-    position: relative;
-    height: 100%; 
-    width: 100%; 
-    background-color: rgb(226, 226, 226);
+.bg__photo-page {  
     display:grid; 
-    grid-template-areas:
-    "photo photo" 
-    "comments misc";
+    grid-template-columns: 25% 25% 25% 25%; 
+    grid-template-rows: 600px 500px;
 }
 
 .photo__comments { 
-    grid-area: comments;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 .photo__misc { 
@@ -19,13 +16,14 @@
 }
 
 .photo__first-half {
-    grid-area: photo;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 5;
     background-color: rgb(53, 51, 51); 
     display: flex; 
     justify-content: center;
     align-items: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
 
 .photo__container {

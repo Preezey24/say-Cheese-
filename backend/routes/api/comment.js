@@ -23,9 +23,9 @@ router.get('/:photoId(\\d+)', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', asyncHandler( async (req, res) => {
-    const { comment, photoId, userId } = req.body;
+    const { comment, photoId, userId} = req.body;
     
-    const newComment = Comment.build({
+    let newComment = Comment.build({
         comment, 
         photoId,
         userId, 

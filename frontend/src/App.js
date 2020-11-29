@@ -23,11 +23,8 @@ function App() {
   }, [dispatch]);
   useEffect(() => {
     const currentPath = location.pathname; 
-    console.log(currentPath); 
-    const pathArr = currentPath.split("/");
-    console.log(pathArr);  
+    const pathArr = currentPath.split("/"); 
     const tag = pathArr[pathArr.length-1]; 
-    console.log(tag); 
     setTag(tag); 
   }, [location])
   

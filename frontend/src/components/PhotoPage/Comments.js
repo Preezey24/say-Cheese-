@@ -4,6 +4,7 @@ import * as commentActions from '../../store/comment';
 import { useParams } from 'react-router-dom'; 
 import './Comments.css'; 
 import './PhotoPage.css';
+import { restoreUser } from '../../store/session';
 
 const Comments = () => {
     const dispatch = useDispatch(); 
@@ -13,6 +14,7 @@ const Comments = () => {
     const [editCommentId, setEditComment] = useState("");  
     const { photoId } = useParams(); 
     const userId = useSelector(state => state.session.user.id);
+    const username = useSelector(state => state.session.user.username); 
     const photo = useSelector(state => state.photo)
     const comments = useSelector(state => state.comment); 
 
@@ -26,12 +28,12 @@ const Comments = () => {
     };
 
     const deleteClick = (e) => {
-        const commentId = e.target.id;
+        const commentId = e.currentTarget.id;
         dispatch(commentActions.deleteComment(commentId, photoId));
     };
 
     const editClick = (e) => {
-        const commentId = e.target.id; 
+        const commentId = e.currentTarget.id; 
         setEdit(true);
         setEditComment(commentId); 
         setEditText(comments[commentId].comment);
@@ -50,18 +52,32 @@ const Comments = () => {
                     </p>
                     <p className={"description__author"}>
                         {photo.author}
-                    </p>               
+                    </p>  
+            </div>             
             <div className={"comments__container"}>
                 {Object.entries(comments).map(([key, value]) => {
-                    const auth = userId === value.userId
+                    const auth = userId === value.userId;
+                    let otherUser; 
+                    if (value.User) {
+                        otherUser = true; 
+                    } else {
+                        otherUser = false; 
+                    } 
                     return (
                         <>  
                             {!(editCommentId == key) && (
                                     <div key={key} className={"comment__container"}>
                                         <div>
-                                            <p className={"comment__username"}>
-                                                {value.User.username}
-                                            </p>
+                                            {!otherUser && 
+                                                <p className={"comment__username"}>
+                                                    {username}
+                                                </p>
+                                            }
+                                            {otherUser &&
+                                                <p className={"comment__username"}>
+                                                    {value.User.username}
+                                                </p>
+                                            }
                                             <p className={"comment__comment"}>
                                                 {value.comment}
                                             </p>
@@ -89,14 +105,14 @@ const Comments = () => {
                     )
                 })}
             </div>
-                <div className={"textbox__container"}>
-                    <textarea className={"textbox__textarea"} placeholder="Add a comment" cols="30" 
-                    rows="10" onChange={(e) => setComment(e.target.value)} value={newComment}/>
-                    <button className={"textbox__button"} onClick={addClick}>
-                        Comment
-                    </button>
-                </div>
+            <div className={"textbox__container"}>
+                <textarea className={"textbox__textarea"} placeholder="Add a comment" cols="30" 
+                rows="10" onChange={(e) => setComment(e.target.value)} value={newComment}/>
+                <button className={"textbox__button"} onClick={addClick}>
+                    Comment
+                </button>
             </div>
+
         </>
     )
 };

@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 .description__container {
-    box-sizing: border-box;
-    padding-left: 300px;  
+    box-sizing: border-box;  
 }
 
 .description__title {
@@ -83,8 +82,12 @@
 }
 
 .textbox__button {
-    position: relative; 
-    top: 25px; 
-    right: 75px; 
     opacity: 0; 
+    background:#2cabca;
+    color:#FFF;
+    cursor: pointer;
+}
+
+.textbox__button:hover {
+    background:#1325ce;
 }
