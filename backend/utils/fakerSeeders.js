@@ -41,12 +41,12 @@ function randomPhoto() {
     "sports", "transport"]; 
     const i = getRandom(photoArray.length-1); 
     const type = photoArray[i]; 
-    const sizeOne = 640; 
-    const sizeTwo = 480;  
+    const sizeOne = 450; 
+    const sizeTwo = 400;  
     return faker.image.imageUrl(sizeOne,sizeTwo,type);    
 };
 
-for(let i=0; i<50; i++) {
+for(let i=0; i<21; i++) {
   const userId = getRandom(users); 
   const titleValNum = getRandom(photoTitles.length-1); 
   const id = i + 1; 
@@ -197,13 +197,24 @@ const randomComments = [
     "Fantastic", 
     "This image could have looked better with a nicer camera", 
     "Woaaaaaaaaaaaaah", 
-    "One word...howw?"
+    "One word...howw?", 
+    "Nice", 
+    "Well done", 
+    "I have been there", 
+    "That place looks great", 
+    "Fabolous", 
+    "Nice photo", 
+    "Dope", 
+    "I love it", 
+    "Wish I could go there", 
+    "Beautiful scenery", 
+    "I wish this was taken by me",
 ]
 
 const comments = []; 
 const photosNum = 50
 
-for(let i=0; i<50; i++) {
+for(let i=0; i<150; i++) {
     const userId = getRandom(users); 
     const photoId = getRandom(photosNum); 
     const comment = randomComments[getRandom(randomComments.length) - 1];
