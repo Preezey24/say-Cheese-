@@ -10,11 +10,6 @@
     grid-column-end: 3;
 }
 
-.photo__misc { 
-    grid-area: misc;
-    background-color: rgb(226, 226, 226);
-}
-
 .photo__first-half {
     grid-row-start: 1;
     grid-row-end: 2;
@@ -40,3 +35,18 @@
     border-radius: 3px; 
 }
 
+
+.misc__container {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2; 
+    position: relative; 
+}
+
+.misc__container-date {
+    position: absolute;
+    left: 150px; 
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Robot', sans-serif;
+}

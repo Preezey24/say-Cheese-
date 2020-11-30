@@ -71,8 +71,8 @@ export const editComment = (commentId, newComment) => async dispatch => {
             newComment,
         }),
     });
-    const comment = res.data; 
-    dispatch(adjustComment(comment)); 
+    const comments = res.data; 
+    dispatch(adjustComment(comments)); 
 }
 
 const initialState = {};

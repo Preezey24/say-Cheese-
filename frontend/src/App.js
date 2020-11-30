@@ -36,9 +36,6 @@ function App() {
         <Route exact path="/">
           <HomePage/>
         </Route>
-        {/* <Route path="/login">
-          <LoginFormModal />
-        </Route> */}
         <Route path="/signup">
           <SignUpFormPage />
         </Route>

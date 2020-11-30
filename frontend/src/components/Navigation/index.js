@@ -13,9 +13,7 @@ const Navigation = ({ isLoaded }) => {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <div>
-                    <ProfileButton user={sessionUser} />
-                </div>
+                <ProfileButton user={sessionUser} />
                 <div className={"nav__div-search"}>
                     <SearchBar />
                 </div>

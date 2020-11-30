@@ -5,6 +5,12 @@ import { useParams } from 'react-router-dom';
 import Comments from './Comments'; 
 import './PhotoPage.css'; 
 
+const formatDate = (date) => {
+    let arr = date.split('T'); 
+    let dateArr = arr[0].split('-'); 
+    return `Uploaded on ${dateArr[1]} ${dateArr[2]}, ${dateArr[0]}`;
+}
+
 const PhotoPage = () => {
     const [photo, setPhoto] = useState("..loading");
     const dispatch = useDispatch(); 
@@ -13,6 +19,7 @@ const PhotoPage = () => {
     useEffect(() => {
         dispatch(photoActions.getSinglePhoto(photoId)).then((photo) => setPhoto(photo)); 
     }, [dispatch]);
+
 
     return (
         <div className={"bg__photo-page"}>
@@ -24,9 +31,13 @@ const PhotoPage = () => {
             <div className={"photo__comments"}>
                 <Comments /> 
             </div>
-            <div className={"photo__misc"}>
-                <p>HELLO WORLD</p>
-            </div>
+            {photo.id &&
+                <div className={"misc__container"}>
+                    <p className={"misc__container-date"}>
+                        {formatDate(photo.createdAt)}
+                    </p>
+                </div> 
+            }   
         </div>
     );
 }

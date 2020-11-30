@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.profilebutton__container {
+    position: relative; 
+}
+
+.profilebutton__button {
+    position: absolute;
+    top: 15px; 
+    left: 20px; 
+    border: none; 
+    cursor: pointer;
+}
+
+.profilebutton__button:hover {
+    background-color: #2caaca7a;
+    border: 1px black solid;
+}
+
+.profile-dropdown {
+    position: absolute; 
+    top: 30px;
+    left: 30px;  
+    background-color: rgb(248, 215, 215);
+    width: 100px; 
+    padding-left: 10px;
+    z-index: 1000; 
+    border-radius: 10px;
+}
+
+.profile-dropdown li {
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    font-family: 'Acme';
+}
+
+.profile-dropdown__button { 
+    height: 30px;
+    border-radius: 3px; 
+    border: rgba(0,0,0,0.3) 0px solid; 
+    box-sizing:border-box; 
+    background:#2cabca;
+    color:#FFF;
+    font-weight:bold;
+    font-size: 12pt;
+    cursor: pointer;  
+}
+
+.profile-dropdown__button:hover {
+    background:#1325ce;
+}

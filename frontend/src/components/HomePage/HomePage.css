@@ -1,0 +1,11 @@
+.page__container {
+    display: grid; 
+    grid-template-columns: 5% 96%;
+    background: rgba(173, 216, 230, 0.397);
+}
+
+.photoHome__container {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 0px;
+}

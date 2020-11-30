@@ -17,8 +17,7 @@
 
 .nav__div-home {
     grid-area: home;
-    display: flex; 
-    justify-content: center;
+    position: relative;
 }
 
 .nav__div-title {
@@ -75,6 +74,9 @@
 }
 
 .nav__home-button {
+    position: absolute; 
+    top: 5px; 
+    left: 10px; 
     width: 80px;
     margin: 10px 5px; 
     border: none; 

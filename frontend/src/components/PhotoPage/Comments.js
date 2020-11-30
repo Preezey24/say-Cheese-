@@ -3,21 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../store/comment';
 import { useParams } from 'react-router-dom'; 
 import './Comments.css'; 
-import './PhotoPage.css';
-import { restoreUser } from '../../store/session';
 
 const Comments = () => {
     const dispatch = useDispatch(); 
     const [newComment, setComment] = useState(""); 
     const [editText, setEditText] = useState(""); 
     const [edit, setEdit] = useState(false);
-    const [editCommentId, setEditComment] = useState("");  
+    const [editCommentId, setEditComment] = useState("");   
     const { photoId } = useParams(); 
     const userId = useSelector(state => state.session.user.id);
     const username = useSelector(state => state.session.user.username); 
     const photo = useSelector(state => state.photo)
     const comments = useSelector(state => state.comment); 
-
+    
     useEffect(() => {
         dispatch(commentActions.getComments(comments));
     }, [dispatch]); 
@@ -31,19 +29,19 @@ const Comments = () => {
         const commentId = e.currentTarget.id;
         dispatch(commentActions.deleteComment(commentId, photoId));
     };
-
+    
     const editClick = (e) => {
         const commentId = e.currentTarget.id; 
         setEdit(true);
         setEditComment(commentId); 
         setEditText(comments[commentId].comment);
     };
-
+    
     const editComplete = () => {
         dispatch(commentActions.editComment(editCommentId, editText));
         setEdit(false); 
     }
-
+    
     return (
         <>
             <div className={"description__container"}> 
@@ -53,7 +51,7 @@ const Comments = () => {
                     <p className={"description__author"}>
                         {photo.author}
                     </p>  
-            </div>             
+            </div>         
             <div className={"comments__container"}>
                 {Object.entries(comments).map(([key, value]) => {
                     const auth = userId === value.userId;
@@ -97,8 +95,8 @@ const Comments = () => {
                             {edit && editCommentId == key && (
                                 <div>
                                     <textarea cols="30" rows="10" onChange={(e) => setEditText(e.target.value)} 
-                                    value={editText}/>
-                                    <button onClick={editComplete}>Done</button>
+                                    value={editText} className={"textbox__edit-text"}/>
+                                    <button onClick={editComplete} className={"comment__edit-complete-button"}>Done</button>
                                 </div>
                             )}
                         </>
