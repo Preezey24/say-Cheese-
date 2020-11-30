@@ -28,7 +28,7 @@ function SignUpFormPage() {
     }
 
     return (
-        <div className={"bg"}>
+        <div className={"bg__signup"}>
             <div className={"module"}>    
                 <div className={"form__heading"}>
                     <p>Get immediate access to <span className={"saycheese"}>say Cheese!!!</span></p> 
