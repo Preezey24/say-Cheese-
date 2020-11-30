@@ -46,7 +46,7 @@ function randomPhoto() {
     return faker.image.imageUrl(sizeOne,sizeTwo,type);    
 };
 
-for(let i=0; i<21; i++) {
+for(let i=0; i<42; i++) {
   const userId = getRandom(users); 
   const titleValNum = getRandom(photoTitles.length-1); 
   const id = i + 1; 
@@ -73,7 +73,7 @@ for(let i=0; i<21; i++) {
 //Tag generation 
 const tagObj = {
     animals: [
-      "dog", 
+    "dog", 
     "cat", 
     "bird", 
     "turtle",
@@ -212,7 +212,7 @@ const randomComments = [
 ]
 
 const comments = []; 
-const photosNum = 50
+const photosNum = 42;
 
 for(let i=0; i<150; i++) {
     const userId = getRandom(users); 
