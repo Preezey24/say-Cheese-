@@ -45,7 +45,8 @@
 
 .misc__container-date {
     position: absolute;
-    left: 150px; 
+    left: 110px; 
+    top: 10px; 
     font-size: 18px;
     font-weight: bold;
     font-family: 'Robot', sans-serif;

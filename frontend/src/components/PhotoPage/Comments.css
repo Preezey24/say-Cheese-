@@ -33,7 +33,7 @@
 }
 
 .comment__container:hover { 
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(221, 222, 238, 0.5);
 }
 
 .comment__container:hover button {
@@ -56,7 +56,7 @@
     position: relative;
     top: 8px;
     border: none;
-    background-color: rgb(241, 241, 241);
+    background-color:  rgb(221, 222, 238, 0.5);
     opacity: 0;
     cursor: pointer;
 }
@@ -82,7 +82,7 @@
     position: relative;
     top: 8px;
     border: none;
-    background-color: rgb(241, 241, 241);
+    background-color:  rgb(221, 222, 238, 0.5);
     opacity: 0;
     cursor: pointer;
 }

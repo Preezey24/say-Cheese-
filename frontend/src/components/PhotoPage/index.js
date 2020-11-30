@@ -8,7 +8,7 @@ import './PhotoPage.css';
 const formatDate = (date) => {
     let arr = date.split('T'); 
     let dateArr = arr[0].split('-'); 
-    return `Uploaded on ${dateArr[1]} ${dateArr[2]}, ${dateArr[0]}`;
+    return `Uploaded on ${dateArr[2]} of the ${dateArr[1]}, ${dateArr[0]}`;
 }
 
 const PhotoPage = () => {
