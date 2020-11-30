@@ -33,11 +33,23 @@ const PhotoPage = () => {
             </div>
             {photo.id &&
                 <div className={"misc__container"}>
-                    <p className={"misc__container-date"}>
-                        {formatDate(photo.createdAt)}
-                    </p>
-                </div> 
-            }   
+                    <div>
+                        <p className={"misc__container-date"}>
+                            {formatDate(photo.createdAt)}
+                        </p> 
+                    </div>
+                    <ul className={"tag__container"}>
+                        <span className={"heading"}>Tags</span>
+                        {photo.Tags.map(tag => {
+                            return (
+                                <li className={"tag__tags"}>
+                                    {`#${tag.tag}`}
+                                </li>
+                            )
+                        })}  
+                    </ul>
+                </div>
+            } 
         </div>
     );
 }
