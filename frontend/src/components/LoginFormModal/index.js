@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import { NavLink } from 'react-router-dom'; 
 import LoginForm from './LoginForm';
 import '../Navigation/Navigation.css'; 
 

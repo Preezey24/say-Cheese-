@@ -1,8 +1,6 @@
 const express = require('express'); 
 const router = express.Router(); 
 const apiRouter = require('./api'); 
-const asyncHandler = require('express-async-handler'); 
-
 
 // Add a XSRF-TOKEN cookie in development
 router.get('/api/csrf/restore', (req, res) => {

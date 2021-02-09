@@ -5,7 +5,6 @@ import SignUpFormPage from './components/SignUpFormPage';
 import * as sessionActions from './store/session'; 
 import * as photoActions from './store/photo'; 
 import Navigation from "./components/Navigation"; 
-// import LoginFormPage from './components/LoginFormPage';
 import HomePage from './components/HomePage';
 import PhotoPage from './components/PhotoPage';
 import SearchResults from './components/PhotoPage/SearchResults'; 
