@@ -1,4 +1,5 @@
 const express = require('express'); 
+const path = require('path');
 const morgan = require('morgan'); 
 const cors = require('cors'); 
 const csurf = require('csurf'); 
@@ -28,6 +29,7 @@ app.use(
         }
     })
 ); 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes); 
 
 //Catch unhandled requests and forward to error handler
