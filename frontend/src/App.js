@@ -5,7 +5,7 @@ import SignUpFormPage from './components/SignUpFormPage';
 import * as sessionActions from './store/session'; 
 import * as photoActions from './store/photo'; 
 import Navigation from "./components/Navigation";
-import SplashPage from "./components/SplashPage";  
+// import SplashPage from "./components/SplashPage";  
 import HomePage from './components/HomePage';
 import PhotoPage from './components/PhotoPage';
 import SearchResults from './components/PhotoPage/SearchResults'; 
@@ -48,12 +48,12 @@ function App() {
         </Route>
       </Switch>
     )}
-    {!isAuthenticated && (
+    {/* {!isAuthenticated && (
       <Route exact path="/">
         <SplashPage/>
       </Route>
-    )}
-  </>
+    )} */}
+    </>
   );
 }
 

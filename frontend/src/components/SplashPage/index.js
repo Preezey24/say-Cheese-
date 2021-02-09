@@ -1,13 +1,12 @@
-import React from 'react'; 
-import Footer from "./Footer"
-import "./SplashPage.css"
+// import React from 'react'; 
+// import "./SplashPage.css"
 
-const SplashPage = () => {
-    return (
-        <>
-            <Footer/>
-        </>
-    )
-}
+// const SplashPage = () => {
+//     return (
+//         <>
+//             <Footer/>
+//         </>
+//     )
+// }
 
-export default SplashPage;
+// export default SplashPage;
