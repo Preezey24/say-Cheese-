@@ -1,0 +1,56 @@
+.footer_container {
+    grid-area: footer; 
+    width: 98vw;
+    display: grid; 
+    grid-template-columns: 25fr 50fr 25fr;
+    grid-template-areas: 
+    "proj empty me";
+    background-color: rgba(161, 89, 89, 0.1);
+    margin: 0;  
+  }
+
+.footer_proj {
+  grid-area: proj; 
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.footer_me {
+  grid-area: me;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.footer_linked {
+  position: relative; 
+  height: 30px; 
+}
+
+.footer_git {
+  display: flex; 
+  align-items: center; 
+  position: relative;
+  height: 35px; 
+}
+
+.footer_icon_linked {
+  color: cornflowerblue;
+  background-color: white;
+  width: 30px; 
+  height: 30px; 
+}
+
+.footer_icon_git {
+  width: 30px; 
+  height: 30px; 
+}
+
+.footer_link {
+  height: 100%; 
+  font-family: 'Roboto';
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 20px;
+}

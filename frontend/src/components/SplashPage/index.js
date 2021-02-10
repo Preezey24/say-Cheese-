@@ -18,8 +18,8 @@ const SplashPage = () => {
                 <div className={"splashPage__container_heading"}>
                     <h1 className={"splashPage__heading"}>Welcome to say Cheese</h1>
                     <h2 className={"splashPage__text"}>
-                        To see more photos, upload your own photo(s) or leave comments and search
-                        for photos, sign up or log in. 
+                        To search through other user's uploaded photos, leave comments and upload your own 
+                        photos sign up NOW 
                     </h2>
                 </div>
                 <div className={"photoSplash__container"}>
