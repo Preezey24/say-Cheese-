@@ -12,7 +12,6 @@ router.get('/:searchTerm', asyncHandler(async (req, res) => {
         },
         include: Photo,
     });
-    console.log(JSON.stringify(photos)); 
     res.json(photos);  
 }));
 

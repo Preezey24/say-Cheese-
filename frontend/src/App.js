@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { Route, Switch, useLocation } from 'react-router-dom'; 
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom'; 
 import SignUpFormPage from './components/SignUpFormPage'; 
 import * as photoActions from './store/photo'; 
 import Navigation from "./components/Navigation";
@@ -11,11 +11,11 @@ import SearchResults from './components/PhotoPage/SearchResults';
 
 function App() {
   const dispatch = useDispatch(); 
+  const history = useHistory(); 
   const auth = useRef(false); 
   const [tag, setTag] = useState(''); 
   const location = useLocation();
   const user = useSelector(state => state.session.user);
-  console.log(auth); 
   if (user) {
     auth.current = true; 
   } else {
@@ -24,12 +24,6 @@ function App() {
   useEffect(() => {
     dispatch(photoActions.getPhotos()); 
   }, [dispatch]);
-  useEffect(() => {
-    const currentPath = location.pathname; 
-    const pathArr = currentPath.split("/"); 
-    const tag = pathArr[pathArr.length-1]; 
-    setTag(tag); 
-  }, [location])
   
   return (
     <>
