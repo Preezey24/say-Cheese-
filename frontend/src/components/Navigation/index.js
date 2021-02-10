@@ -6,7 +6,7 @@ import SearchBar from './SearchBar'
 import './Navigation.css'; 
 import LoginFormModal from '../LoginFormModal'; 
 
-const Navigation = ({ isLoaded }) => {
+const Navigation = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks; 
@@ -48,7 +48,7 @@ const Navigation = ({ isLoaded }) => {
                 </span>
             </div>
             )}
-            {isLoaded && sessionLinks}
+            {sessionLinks}
         </div>
     )
 }
