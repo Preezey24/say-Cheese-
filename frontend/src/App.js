@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom'; 
+import { Route, Switch, useLocation, Redirect } from 'react-router-dom'; 
 import SignUpFormPage from './components/SignUpFormPage'; 
 import * as photoActions from './store/photo'; 
 import Navigation from "./components/Navigation";
@@ -11,7 +11,6 @@ import SearchResults from './components/PhotoPage/SearchResults';
 
 function App() {
   const dispatch = useDispatch(); 
-  const history = useHistory(); 
   const auth = useRef(false); 
   const [tag, setTag] = useState(''); 
   const location = useLocation();
@@ -19,24 +18,35 @@ function App() {
   if (user) {
     auth.current = true; 
   } else {
-    auth.current = false; 
+    auth.current = false;
   }
   useEffect(() => {
     dispatch(photoActions.getPhotos()); 
-  }, [dispatch]);
+  }, []);
+  useEffect(() => {
+    const currentPath = location.pathname; 
+    const pathArr = currentPath.split("/"); 
+    const tag = pathArr[pathArr.length-1]; 
+    if (tag.length >= 2) {
+      setTag(tag); 
+    };
+  }, [location]);
   
   return (
     <>
     <Navigation />
     {!auth.current && (
-      <Switch>
-        <Route exact path="/">
-          <SplashPage/>
-        </Route>
-        <Route path="/signup">
-          <SignUpFormPage />
-        </Route>
-      </Switch>
+      <>
+        <Redirect to="/" />
+        <Switch>
+          <Route exact path="/">
+            <SplashPage/>
+          </Route>
+          <Route path="/signup">
+            <SignUpFormPage />
+          </Route>
+        </Switch>
+      </>
     )}
     {auth.current && (
       <Switch>

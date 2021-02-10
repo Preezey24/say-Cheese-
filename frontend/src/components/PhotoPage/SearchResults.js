@@ -1,20 +1,11 @@
 import React from 'react'; 
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux'; 
 import './SearchResults.css'
 
 const SearchResults = () => {
     const history = useHistory(); 
-    const photos = useSelector(state => state.photo);
-    const [tag, setTag] = useState(''); 
-    const location = useLocation();
-    
-    useEffect(() => {
-        const currentPath = location.pathname; 
-        const pathArr = currentPath.split("/"); 
-        const tag = pathArr[pathArr.length-1]; 
-        setTag(tag); 
-      }, [location])
+    const photos = useSelector(state => state.photo); 
 
     const handleClick = (e) => {
         const photoId = e.target.id; 
